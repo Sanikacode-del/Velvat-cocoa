@@ -15,7 +15,7 @@ It showcases a curated list of premium chocolates with images, prices, and direc
 - Vanilla JavaScript
 
 ## 📸 Screenshot
-(Add a screenshot of the app here if you want)
+![add preview](screenshots/screenshot.png)
 
 ## 🛍 Chocolates Included
 - Ferrero Rocher
