@@ -14,9 +14,6 @@ It showcases a curated list of premium chocolates with images, prices, and direc
 - CSS3
 - Vanilla JavaScript
 
-## 🚀 Live Demo
-Will be available at: https://yourusername.github.io/velvet-cocoa/
-
 ## 📸 Screenshot
 (Add a screenshot of the app here if you want)
 
