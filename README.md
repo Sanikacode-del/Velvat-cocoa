@@ -14,6 +14,9 @@ It showcases a curated list of premium chocolates with images, prices, and direc
 - CSS3
 - Vanilla JavaScript
 
+## 📸 Screenshot
+![add preview](screenshots/screenshot.png)
+
 ## 🛍 Chocolates Included
 - Ferrero Rocher
 - Lindt Excellence
