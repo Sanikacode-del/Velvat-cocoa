@@ -1,0 +1,213 @@
+/* ──────────── BASIC PAGE STYLES ──────────── */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #fff8f0;
+  color: #3e2723;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #6a1b9a;
+  margin-bottom: 1rem;
+}
+
+/* ──────────── GRID & CARD ──────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+
+  /* fade-in + slide-up */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.6s forwards;
+}
+
+.card:nth-child(2) { animation-delay: 0.1s; }
+.card:nth-child(3) { animation-delay: 0.2s; }
+.card:nth-child(4) { animation-delay: 0.3s; }
+.card:nth-child(5) { animation-delay: 0.4s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* hover glow */
+.card:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 20px rgba(255, 105, 180, 0.6);
+  border: 2px solid #ff69b4;
+}
+
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+.card h3 {
+  margin: 12px 0 6px;
+  font-size: 1.1rem;
+}
+
+.card p {
+  margin: 0 0 12px;
+  font-weight: bold;
+  color: #5d4037;
+}
+
+button {
+  padding: 10px 20px;
+  background: #8d6e63;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background: #5d4037;
+  transform: scale(1.05);
+}
+
+/* ──────────── BACKGROUND FLOATING HEARTS ──────────── */
+.hearts-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.heart {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: #ff6fa1;
+  transform: rotate(45deg);
+  opacity: 0.8;
+  animation: floatUp 6s infinite ease-in;
+  box-shadow: 0 0 10px rgba(255, 111, 161, 0.7);
+}
+
+.heart::before,
+.heart::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: #ff6fa1;
+  border-radius: 50%;
+}
+
+.heart::before { top: -20px; left: 0; }
+.heart::after  { top: 0;    left: -20px; }
+
+@keyframes floatUp {
+  0%   { bottom: -40px; left: calc(10% + 80% * var(--i)); opacity: 0; transform: rotate(45deg) scale(0.8); }
+  50%  { opacity: 1; transform: rotate(45deg) scale(1.1); }
+  100% { bottom: 100%;  opacity: 0; transform: rotate(45deg) scale(0.8); }
+}
+
+.heart:nth-child(1) { --i: 0.1; animation-delay: 0s; }
+.heart:nth-child(2) { --i: 0.3; animation-delay: 2s; }
+.heart:nth-child(3) { --i: 0.5; animation-delay: 4s; }
+.heart:nth-child(4) { --i: 0.7; animation-delay: 1s; }
+.heart:nth-child(5) { --i: 0.9; animation-delay: 3s; }
+
+/* ──────────── NEON SIDE HEARTS ──────────── */
+.side-hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.side-heart {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: red;
+  transform: rotate(45deg);
+  opacity: 0.9;
+  animation: floatSideHeart 6s linear infinite;
+  box-shadow: 0 0 8px red, 0 0 16px red;
+}
+
+.side-heart::before,
+.side-heart::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: red;
+  border-radius: 50%;
+}
+
+.side-heart::before { top: -6px; left: 0; }
+.side-heart::after  { top: 0;   left: -6px; }
+
+@keyframes floatSideHeart {
+  0%   { transform: rotate(45deg) translateY(100vh) scale(1);   opacity: 0.8; }
+  100% { transform: rotate(45deg) translateY(-20vh) scale(1.2); opacity: 0;   }
+}
+
+/* randomised positions & delays */
+.side-heart:nth-child(odd)  { left: 1vw;                animation-delay: calc(0.5s * var(--i)); }
+.side-heart:nth-child(even) { right: 1vw;               animation-delay: calc(0.5s * var(--i)); }
+
+.side-heart:nth-child(1)  { top: 95%; --i: 1; }
+.side-heart:nth-child(2)  { top: 80%; --i: 2; }
+.side-heart:nth-child(3)  { top: 60%; --i: 3; }
+.side-heart:nth-child(4)  { top: 40%; --i: 4; }
+.side-heart:nth-child(5)  { top: 20%; --i: 5; }
+.side-heart:nth-child(6)  { top: 10%; --i: 6; }
+.side-heart:nth-child(7)  { top: 70%; --i: 7; }
+.side-heart:nth-child(8)  { top: 50%; --i: 8; }
+.side-heart:nth-child(9)  { top: 30%; --i: 9; }
+.side-heart:nth-child(10) { top: 15%; --i:10; }
+.side-heart:nth-child(11) { top:  5%; --i:11; }
+.side-heart:nth-child(12) { top: 85%; --i:12; }
+.side-heart:nth-child(13) { top: 75%; --i:13; }
+.side-heart:nth-child(14) { top: 65%; --i:14; }
+.side-heart:nth-child(15) { top: 35%; --i:15; }
+.side-heart:nth-child(16) { top: 25%; --i:16; }
+.side-heart:nth-child(17) { top: 55%; --i:17; }
+.side-heart:nth-child(18) { top: 45%; --i:18; }
+.side-heart:nth-child(19) { top: 90%; --i:19; }
+.side-heart:nth-child(20) { top: 78%; --i:20; }
